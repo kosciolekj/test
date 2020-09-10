@@ -1,10 +1,70 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="AppLover.TextInputLayout" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="hintEnabled">false</item>
+        <item name="hintTextColor">@color/white50</item>
+        <item name="boxStrokeColor">@color/selector_input</item>
+        <item name="materialThemeOverlay">@style/AppLover.TextInputLayout.MaterialThemeOverlay
+        </item>
+    </style>
+
+    <style name="AppLover.TextInputLayout.MaterialThemeOverlay" parent="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="editTextStyle">@style/AppLover.TextInputLayout.TextInputEditText</item>
+    </style>
+
+    <style name="AppLover.TextInputLayout.TextInputEditText" parent="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:textAppearance">@style/AppLoverTextAppearance.Input</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white10</item>
+    </style>
+
+    <style name="AppLover.Button.Green" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:textAppearance">@style/AppLoverTextAppearance.Input</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="strokeColor">@color/green</item>
+        <item name="strokeWidth">@dimen/button_stroke_width</item>
+        <item name="android:backgroundTint">@color/selector_button</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <!-- TEXT -->
+    <style name="AppLoverTextAppearance">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <style name="AppLoverTextAppearance.Error" parent="AppLoverTextAppearance">
+        <item name="android:textColor">@color/green</item>
+    </style>
+
+    <style name="AppLoverTextAppearance.Input" parent="AppLoverTextAppearance">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AppLoverTextAppearance.Input.Error" parent="AppLoverTextAppearance.Error">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="AppLoverTextAppearance.Label" parent="AppLoverTextAppearance">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="AppLoverTextAppearance.BigLabel" parent="AppLoverTextAppearance">
+        <item name="android:textSize">28sp</item>
+    </style>
+
 
 </resources>

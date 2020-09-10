@@ -1,0 +1,20 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="fragment_horizontal_margin">48dp</dimen>
+    <dimen name="fragment_vertical_margin">48dp</dimen>
+
+    <dimen name="button_corner_radius">6dp</dimen>
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_stroke_width">1dp</dimen>
+    <dimen name="logo_big_width">150dp</dimen>
+    <dimen name="logo_big_height">150dp</dimen>
+
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_32">32dp</dimen>
+
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+
+    <dimen name="progress_corner_radius">45dp</dimen>
+</resources>

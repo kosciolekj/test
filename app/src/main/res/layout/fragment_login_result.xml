@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.jacekk.test.ui.loginresult.LoginResultViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor"
+        tools:context=".ui.login.LoginFragment">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_horizontal_50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="56dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_vertical_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="56dp" />
+
+        <ImageView
+            android:id="@+id/image_logo"
+            android:layout_width="@dimen/logo_big_width"
+            android:layout_height="@dimen/logo_big_height"
+            android:layout_marginBottom="@dimen/space_32"
+            android:src="@drawable/ic_applover"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_50"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_right"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_32"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/progress_bar"
+            android:indeterminateDuration="@integer/progress_bar_duration_ms"
+            android:progressDrawable="@drawable/progress_bar"
+            android:visibility="@{viewModel.loadingVisibility}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_right"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left"
+            app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_50" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@{viewModel.result}"
+            android:textAppearance="@style/AppLoverTextAppearance.BigLabel"
+            android:visibility="@{viewModel.resultVisibility}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_right"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left"
+            app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_50"
+            tools:text="@string/error" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

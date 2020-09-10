@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Test</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email address</string>
+    <string name="prompt_password">Password</string>
+
+    <string name="username_error">Use email address</string>
+    <string name="password_error">Password should have min. 5 characters</string>
+
+    <string name="login">Login</string>
+    <string name="success">Logging success!</string>
+    <string name="error">Logging failed!</string>
+
 </resources>
