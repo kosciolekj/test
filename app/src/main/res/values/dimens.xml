@@ -16,5 +16,7 @@
     <dimen name="text_size_14">14sp</dimen>
     <dimen name="text_size_20">20sp</dimen>
 
+    <dimen name="margin">56dp</dimen>
+
     <dimen name="progress_corner_radius">45dp</dimen>
 </resources>

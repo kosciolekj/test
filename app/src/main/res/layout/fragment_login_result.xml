@@ -30,14 +30,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="56dp" />
+            app:layout_constraintGuide_begin="@dimen/margin" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_vertical_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="56dp" />
+            app:layout_constraintGuide_end="@dimen/margin" />
 
         <ImageView
             android:id="@+id/image_logo"
@@ -68,14 +68,14 @@
             android:id="@+id/result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="@dimen/space_32"
             android:text="@{viewModel.result}"
             android:textAppearance="@style/AppLoverTextAppearance.BigLabel"
             android:visibility="@{viewModel.resultVisibility}"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_right"
             app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left"
             app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_50"
-            tools:text="@string/error" />
+            tools:text="@string/login_failed" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

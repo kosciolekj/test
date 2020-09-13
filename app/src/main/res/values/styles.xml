@@ -47,7 +47,7 @@
     </style>
 
     <style name="AppLoverTextAppearance.Error" parent="AppLoverTextAppearance">
-        <item name="android:textColor">@color/green</item>
+        <item name="android:textColor">@color/error</item>
     </style>
 
     <style name="AppLoverTextAppearance.Input" parent="AppLoverTextAppearance">

@@ -2,7 +2,6 @@ package com.jacekk.test
 
 import android.app.Application
 import com.jacekk.test.di.appModule
-import com.jacekk.test.di.domainModule
 import com.jacekk.test.di.networkModule
 import com.jacekk.test.di.viewModule
 import org.koin.android.BuildConfig
@@ -26,7 +25,6 @@ class TestApp : Application() {
         modules(
             listOf(
                 viewModule,
-                domainModule,
                 networkModule,
                 appModule
             )
