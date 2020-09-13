@@ -9,6 +9,6 @@
     <color name="white50">#80FFFFFF</color>
     <color name="white10">#1AFFFFFF</color>
     <color name="green">#1DE278</color>
-    <color name="error">#e2411d</color>
+    <color name="error">@color/green</color>
 
 </resources>
