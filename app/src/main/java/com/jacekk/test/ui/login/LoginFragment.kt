@@ -6,6 +6,8 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -13,6 +15,7 @@ import com.jacekk.test.R
 import com.jacekk.test.databinding.FragmentLoginBinding
 import kotlinx.android.synthetic.main.fragment_login.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.concurrent.TimeUnit
 
 const val USERNAME_KEY = "username"
 const val PASSWORD_KEY = "password"
@@ -39,6 +42,13 @@ class LoginFragment : Fragment() {
         }
     }
 
+    var time: Long? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -53,6 +63,28 @@ class LoginFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            if (time == null) {
+                time = System.currentTimeMillis()
+                return@addCallback
+            }
+            time?.let {
+                val currentTime = System.currentTimeMillis()
+                val longTimeInSeconds = TimeUnit.MILLISECONDS.toSeconds(currentTime - it)
+                if (longTimeInSeconds < 2) {
+                    Toast.makeText(requireContext(), "Bye bye!", Toast.LENGTH_SHORT).show()
+                    requireActivity().finishAndRemoveTask()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Fast click again to quit :)",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    time = currentTime
+                }
+            }
+        }
+
         input_username.editText?.addTextChangedListener(afterTextChangedListener)
         input_password.editText?.addTextChangedListener(afterTextChangedListener)
         button_login.setOnClickListener {
@@ -63,10 +95,6 @@ class LoginFragment : Fragment() {
             viewModel.reset()
             findNavController().navigate(R.id.action_loginFragment_to_loginResultFragment, bundle)
         }
-
-        viewModel.loginViewState.observe(viewLifecycleOwner, Observer {
-
-        })
 
         viewModel.loginViewState.observe(viewLifecycleOwner, Observer {
             val loginState = it ?: return@Observer
@@ -98,4 +126,5 @@ class LoginFragment : Fragment() {
             it.editText?.removeTextChangedListener(afterTextChangedListener)
         }
     }
+
 }
