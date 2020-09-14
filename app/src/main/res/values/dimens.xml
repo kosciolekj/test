@@ -9,12 +9,15 @@
     <dimen name="logo_big_width">150dp</dimen>
     <dimen name="logo_big_height">150dp</dimen>
 
+    <dimen name="space_8">8dp</dimen>
     <dimen name="space_16">16dp</dimen>
+    <dimen name="space_24">24dp</dimen>
     <dimen name="space_32">32dp</dimen>
 
     <dimen name="text_size_10">10sp</dimen>
     <dimen name="text_size_14">14sp</dimen>
     <dimen name="text_size_20">20sp</dimen>
+
 
     <dimen name="margin">56dp</dimen>
 

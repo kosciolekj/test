@@ -15,6 +15,7 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         android:background="@color/backgroundColor"
         tools:context=".ui.login.LoginFragment">
 
@@ -98,7 +99,7 @@
             android:id="@+id/input_password_error"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/space_8"
             android:textAppearance="@style/AppLoverTextAppearance.Input.Error"
             app:layout_constraintEnd_toEndOf="@id/input_password"
             app:layout_constraintStart_toStartOf="@id/input_password"
@@ -109,7 +110,7 @@
             android:id="@+id/button_login"
             style="@style/AppLover.Button.Green"
             android:layout_width="0dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="@dimen/space_24"
             android:enabled="@{viewModel.loginViewState.dataValid}"
             android:text="@string/login"
             android:textSize="@dimen/text_size_14"
@@ -129,14 +130,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="56dp" />
+            app:layout_constraintGuide_begin="@dimen/margin" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_vertical_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="56dp" />
+            app:layout_constraintGuide_end="@dimen/margin" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="64dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
