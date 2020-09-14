@@ -49,10 +49,6 @@ class LoginFragment : Fragment() {
             onCredentialsChanged()
         }
         button_login.setOnClickListener {
-//            val bundle = Bundle().apply {
-//                putString(USERNAME_KEY, input_username.editText?.text.toString())
-//                putString(PASSWORD_KEY, input_username.editText?.text.toString())
-//            }
             viewModel.reset()
             findNavController().navigate(
                 R.id.action_loginFragment_to_loginResultFragment,
