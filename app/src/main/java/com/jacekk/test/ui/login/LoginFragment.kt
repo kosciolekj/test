@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.transition.TransitionManager
 import com.jacekk.test.R
 import com.jacekk.test.databinding.FragmentLoginBinding
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -89,8 +91,27 @@ class LoginFragment : Fragment() {
                 input_password_error.visibility = View.GONE
             }
         })
+
+        viewModel.animRunning.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                TransitionManager.beginDelayedTransition(container)
+                val constrainSet = ConstraintSet()
+                constrainSet.clone(container)
+                constrainSet.connect(
+                    image_logo.id,
+                    ConstraintSet.TOP,
+                    guideline_logo.id,
+                    ConstraintSet.BOTTOM
+                )
+                constrainSet.applyTo(container)
+            }
+        })
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.onVisible()
+    }
 
     private fun setupDoubleBackPress() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {

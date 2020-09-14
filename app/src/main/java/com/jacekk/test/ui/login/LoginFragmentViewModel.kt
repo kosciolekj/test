@@ -2,16 +2,33 @@ package com.jacekk.test.ui.login
 
 import android.app.Application
 import android.util.Patterns
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.jacekk.test.R
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class LoginFragmentViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _loginViewState = MutableLiveData<LoginFragmentViewState>(LoginFragmentViewState())
     val loginViewState: LiveData<LoginFragmentViewState> = _loginViewState
 
+    private val _animRunning = MutableLiveData<Boolean>(false)
+    val animRunning: LiveData<Boolean> = _animRunning
+
+    private val _layoutVisibility = MutableLiveData<Int>(View.GONE)
+    val layoutVisibility: LiveData<Int> = _layoutVisibility
+
+    enum class AnimState {
+        NOT_STARTED,
+        STARTED,
+        FINISHED
+    }
+
+    private var animState = AnimState.NOT_STARTED
 
     private fun checkUsernameError(username: String): Int? {
         return with(username) {
@@ -59,4 +76,19 @@ class LoginFragmentViewModel(application: Application) : AndroidViewModel(applic
         _loginViewState.value = LoginFragmentViewState()
     }
 
+    fun onVisible() {
+        when (animState) {
+            AnimState.NOT_STARTED -> {
+                viewModelScope.launch {
+                    animState = AnimState.STARTED
+                    delay(1500)
+                    _animRunning.postValue(true)
+                    delay(500)
+                    animState = AnimState.FINISHED
+                    _layoutVisibility.postValue(View.VISIBLE)
+                }
+            }
+            AnimState.STARTED, AnimState.FINISHED -> return
+        }
+    }
 }
